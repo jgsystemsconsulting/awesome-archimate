@@ -67,3 +67,48 @@ See [Editorial neutrality](CONTRIBUTING.md#editorial-neutrality).
 
 Contributions welcome: see [CONTRIBUTING.md](CONTRIBUTING.md) for the inclusion bar,
 entry format, and tag vocabulary.
+
+## Install
+
+Nothing to install. This list is a curated index: browse it here on GitHub,
+or clone it:
+
+```bash
+git clone https://github.com/jgsystemsconsulting/awesome-archimate.git
+```
+
+## Usage
+
+- Browse the sections under [Contents](#contents), or search the page with
+  your browser's find function.
+- Open any entry's link to reach the upstream resource; the list never
+  re-hosts content.
+- To suggest a resource, use the
+  [suggestion form](https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=suggest-resource.yml)
+  (added with this release).
+- To report a wrong or dead entry, use the
+  [bug report form](https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=bug_report.yml)
+  (added with this release).
+
+## Licence
+
+Released under the [CC0-1.0](LICENSE) licence (public domain dedication).
+Linked resources remain under their own licences.
+
+To request a commercial or academic licence, or if you are unsure which
+licence you need: https://labs.jgsystemsconsulting.com/licensing.html
+
+## Support
+
+- Bug or dead link: [bug report form](https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=bug_report.yml)
+- Suggest a resource (the list's improvement channel):
+  [suggestion form](https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=suggest-resource.yml)
+- Security issues: [private security advisory](https://github.com/jgsystemsconsulting/awesome-archimate/security/advisories/new)
+  (see [SECURITY.md](SECURITY.md))
+- Capella and Arcadia resources belong on the sibling list:
+  [awesome-capella issues](https://github.com/jgsystemsconsulting/awesome-capella/issues)
+
+## Version
+
+Current release: 0.1.0 (2026-09-17). See [CHANGELOG.md](CHANGELOG.md) and
+[RELEASE-INFO.txt](RELEASE-INFO.txt).
