@@ -50,7 +50,7 @@ Tags appear in this fixed order, drawn **only** from this vocabulary:
 `language -> method -> tool -> has-model -> type -> spec/standard -> paid -> year`
 
 | Axis | Cardinality | Values |
-|------|-------------|--------|
+| ------ | ------------- | -------- |
 | language | exactly 1 | `ArchiMate3` (3.x, including 3.2) · `ArchiMate4` · `ArchiMate-general` (version-agnostic: methodology, books, both-version docs; not a lazy default) |
 | method | 0 or 1 | `TOGAF` |
 | tool | 0 or more | `Archi` · `other-tool` |
