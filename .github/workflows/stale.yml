@@ -27,7 +27,7 @@ jobs:
           set -euo pipefail
           cutoff=$(date -u -d "24 months ago" +%Y-%m-%dT%H:%M:%SZ)
           {
-            echo "Entries with no push in over 24 months (as of $(date -u +%Y-%m-%d)). Advisory only: entries meeting the foundational-value exception (contributing.md criterion 4) are still valid."
+            echo "Entries with no push in over 24 months (as of $(date -u +%Y-%m-%d)). Advisory only: entries meeting the foundational-value exception (criterion 4 of the Inclusion bar in CONTRIBUTING.md) are still valid."
             echo
           } > freshness-report.md
           found=0
