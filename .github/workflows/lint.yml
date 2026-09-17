@@ -1,0 +1,35 @@
+name: Lint
+# Action refs are pinned to full-length commit SHAs (supply-chain hardening,
+# per GitHub's security-hardening guide). To bump an action, resolve its tag
+# to a commit SHA, e.g.:
+#   curl -s https://api.github.com/repos/<owner>/<repo>/commits/<tag>
+# Use the "sha" field (the commit, not a tag object SHA; see annotated-tag
+# note in the repo spec for P9), then update the version comment to match.
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 20
+      - name: awesome-lint
+        run: npx awesome-lint@2.3.0 README.md
+      - name: markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@21c1be1b93ad9ed58fa840aacc3f279cde2a72ff # v24
+        with:
+          globs: |
+            README.md
+            contributing.md

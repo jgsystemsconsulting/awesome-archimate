@@ -1,0 +1,56 @@
+name: Links
+# Action refs are pinned to full-length commit SHAs (supply-chain hardening,
+# per GitHub's security-hardening guide). To bump an action, resolve its tag
+# to a commit SHA, e.g.:
+#   curl -s https://api.github.com/repos/<owner>/<repo>/commits/<tag>
+# Use the "sha" field (the commit, not a tag object SHA; see annotated-tag
+# note in the repo spec for P9), then update the version comment to match.
+
+on:
+  schedule:
+    - cron: "0 18 * * 1"
+  workflow_dispatch:
+  pull_request:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Link Checker
+        id: lychee
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
+        with:
+          args: --no-progress --max-retries 3 README.md
+          fail: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Advisory broken-link warning
+        if: github.event_name == 'pull_request' && steps.lychee.outputs.exit_code != 0
+        run: |
+          {
+            echo "Lychee exit code: ${{ steps.lychee.outputs.exit_code }}."
+            echo "Broken or unreachable links were found. This check is advisory and does not block merge; see the Link Checker step log for the URL list."
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "::warning::Lychee found unreachable links (exit code ${{ steps.lychee.outputs.exit_code }}); advisory only, see the Link Checker step log"
+      - name: Ensure issue labels exist
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create report --color 1D76DB || true
+          gh label create broken-links --color D93F0B || true
+      - name: Create or update the report issue
+        if: github.event_name != 'pull_request' && steps.lychee.outputs.exit_code != 0
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          existing=$(gh issue list --state open --search '"Link Checker Report" in:title' --json number --jq ".[0].number // empty")
+          if [ -n "$existing" ]; then
+            gh issue edit "$existing" --body-file lychee/out.md --add-label report --add-label broken-links
+          else
+            gh issue create --title "Link Checker Report" --body-file lychee/out.md --label report --label broken-links
+          fi

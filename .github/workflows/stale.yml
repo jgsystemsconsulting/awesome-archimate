@@ -1,0 +1,59 @@
+name: Freshness report
+# Action refs are pinned to full-length commit SHAs (supply-chain hardening,
+# per GitHub's security-hardening guide). To bump an action, resolve its tag
+# to a commit SHA, e.g.:
+#   curl -s https://api.github.com/repos/<owner>/<repo>/commits/<tag>
+# Use the "sha" field (the commit, not a tag object SHA; see annotated-tag
+# note in the repo spec for P9), then update the version comment to match.
+
+on:
+  schedule:
+    - cron: "0 6 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Build freshness report
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          cutoff=$(date -u -d "24 months ago" +%Y-%m-%dT%H:%M:%SZ)
+          {
+            echo "Entries with no push in over 24 months (as of $(date -u +%Y-%m-%d)). Advisory only: entries meeting the foundational-value exception (contributing.md criterion 4) are still valid."
+            echo
+          } > freshness-report.md
+          found=0
+          skipped=0
+          for url in $(grep -oE "https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+" README.md | sort -u); do
+            repo=$(printf '%s' "${url#https://github.com/}" | cut -d/ -f1-2)
+            pushed=$(curl -sf -H "Authorization: Bearer $GITHUB_TOKEN" "https://api.github.com/repos/$repo" | jq -r ".pushed_at // empty" || true)
+            [ -n "$pushed" ] || { skipped=$((skipped+1)); continue; }
+            if [[ "$pushed" < "$cutoff" ]]; then
+              echo "- [$repo]($url) - last push $pushed" >> freshness-report.md
+              found=1
+            fi
+          done
+          if [ "$found" -eq 0 ]; then
+            echo "No entries exceeded the 24-month threshold." >> freshness-report.md
+          fi
+          if [ "$skipped" -gt 0 ]; then
+            echo "Skipped $skipped repos whose GitHub API data was unavailable; the entry list above may be incomplete or empty." >> freshness-report.md
+          fi
+      - name: Create or update the issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          existing=$(gh issue list --state open --search "Freshness report in:title" --json number --jq ".[0].number // empty")
+          if [ -n "$existing" ]; then
+            gh issue edit "$existing" --body-file freshness-report.md
+          else
+            gh issue create --title "Freshness report" --body-file freshness-report.md
+          fi
