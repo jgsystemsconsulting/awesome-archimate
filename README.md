@@ -21,6 +21,10 @@ See [Editorial neutrality](CONTRIBUTING.md#editorial-neutrality).
 - [Example models](#example-models)
 - [TOGAF alignment](#togaf-alignment)
 - [Communities](#communities)
+- [Install](#install)
+- [Usage](#usage)
+- [Support](#support)
+- [Version](#version)
 
 ## Specifications and standards
 
@@ -79,24 +83,12 @@ git clone https://github.com/jgsystemsconsulting/awesome-archimate.git
 
 ## Usage
 
-- Browse the sections under [Contents](#contents), or search the page with
-  your browser's find function.
-- Open any entry's link to reach the upstream resource; the list never
-  re-hosts content.
-- To suggest a resource, use the
-  [suggestion form](https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=suggest-resource.yml)
-  (added with this release).
-- To report a wrong or dead entry, use the
-  [bug report form](https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=bug_report.yml)
-  (added with this release).
-
-## Licence
-
-Released under the [CC0-1.0](LICENSE) licence (public domain dedication).
-Linked resources remain under their own licences.
-
-To request a commercial or academic licence, or if you are unsure which
-licence you need: https://labs.jgsystemsconsulting.com/licensing.html
+1. Open the Contents at the top and jump to a section, or search the page with
+   your browser's find function.
+2. Open any entry's link to reach the upstream resource; the list never
+   re-hosts content.
+3. To suggest a resource or report a defect, use the Support channels below
+   (or open a pull request that follows CONTRIBUTING.md).
 
 ## Support
 
@@ -107,8 +99,10 @@ licence you need: https://labs.jgsystemsconsulting.com/licensing.html
   (see [SECURITY.md](SECURITY.md))
 - Capella and Arcadia resources belong on the sibling list:
   [awesome-capella issues](https://github.com/jgsystemsconsulting/awesome-capella/issues)
+- Licence: this list is [CC0 1.0 Universal](LICENSE). Linked resources keep their
+  own licences. Licence enquiries: [labs licensing form](https://labs.jgsystemsconsulting.com/licensing.html).
 
 ## Version
 
-Current release: 0.1.0 (2026-09-17). See [CHANGELOG.md](CHANGELOG.md) and
+Current release: **0.1.0** (2026-09-17). See [CHANGELOG.md](CHANGELOG.md) and
 [RELEASE-INFO.txt](RELEASE-INFO.txt).
