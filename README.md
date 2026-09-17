@@ -21,6 +21,10 @@ See [Editorial neutrality](CONTRIBUTING.md#editorial-neutrality).
 - [Example models](#example-models)
 - [TOGAF alignment](#togaf-alignment)
 - [Communities](#communities)
+- [Install](#install)
+- [Usage](#usage)
+- [Support](#support)
+- [Version](#version)
 
 ## Specifications and standards
 
@@ -67,3 +71,38 @@ See [Editorial neutrality](CONTRIBUTING.md#editorial-neutrality).
 
 Contributions welcome: see [CONTRIBUTING.md](CONTRIBUTING.md) for the inclusion bar,
 entry format, and tag vocabulary.
+
+## Install
+
+Nothing to install. This list is a curated index: browse it here on GitHub,
+or clone it:
+
+```bash
+git clone https://github.com/jgsystemsconsulting/awesome-archimate.git
+```
+
+## Usage
+
+1. Open the Contents at the top and jump to a section, or search the page with
+   your browser's find function.
+2. Open any entry's link to reach the upstream resource; the list never
+   re-hosts content.
+3. To suggest a resource or report a defect, use the Support channels below
+   (or open a pull request that follows CONTRIBUTING.md).
+
+## Support
+
+- Bug or dead link: [bug report form](https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=bug_report.yml)
+- Suggest a resource (the list's improvement channel):
+  [suggestion form](https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=suggest-resource.yml)
+- Security issues: [private security advisory](https://github.com/jgsystemsconsulting/awesome-archimate/security/advisories/new)
+  (see [SECURITY.md](SECURITY.md))
+- Capella and Arcadia resources belong on the sibling list:
+  [awesome-capella issues](https://github.com/jgsystemsconsulting/awesome-capella/issues)
+- Licence: this list is [CC0 1.0 Universal](LICENSE). Linked resources keep their
+  own licences. Licence enquiries: [labs licensing form](https://labs.jgsystemsconsulting.com/licensing.html).
+
+## Version
+
+Current release: **0.1.0** (2026-09-17). See [CHANGELOG.md](CHANGELOG.md) and
+[RELEASE-INFO.txt](RELEASE-INFO.txt).

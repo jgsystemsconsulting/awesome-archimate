@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+.lycheecache
+.playwright-mcp/
+*.bak
+.DS_Store
+Thumbs.db
