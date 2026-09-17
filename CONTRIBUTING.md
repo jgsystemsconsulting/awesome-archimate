@@ -122,12 +122,14 @@ package manager (`scoop`, `winget`, or `choco` on Windows, `brew` on macOS, `pac
 `zypper`, `snap`, or `apk` on Linux), then run from the repository root:
 
 ```bash
-lychee --no-progress --max-retries 3 --include-fragments anchor-only README.md
+lychee --no-progress --max-retries 3 --include-fragments=anchor-only README.md
 ```
 
 Export `GITHUB_TOKEN` (for example `GITHUB_TOKEN=$(gh auth token)`) to avoid GitHub
 rate limiting on `github.com` links. Third-party sites sometimes return transient
-timeouts or 429s; retry before treating a failure as a broken link.
+timeouts or 429s; retry before treating a failure as a broken link. lychee 0.24+
+needs the equals form (`--include-fragments=anchor-only`); a bare space-separated
+value is treated as an input path and fails the parse.
 
 ## Maintenance
 
@@ -140,7 +142,7 @@ what each does.
 manual dispatch. PR runs are advisory: a PR with broken links gets a warning but is
 never blocked by it. Scheduled and manual runs create or update a "Link Checker
 Report" issue when the check exits nonzero; a clean run leaves that issue untouched.
-Fragment checking (`--include-fragments anchor-only`) validates that every
+Fragment checking (`--include-fragments=anchor-only`) validates that every
 table-of-contents anchor resolves.
 
 ### Freshness report (monthly)
