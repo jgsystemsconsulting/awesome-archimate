@@ -1,0 +1,56 @@
+name: Suggest a resource
+description: Suggest an ArchiMate or Archi resource to add to the list
+title: "[Suggestion] <resource name>"
+labels: ["suggestion"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Resource name
+      placeholder: e.g. Archi handbook or plugin page
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      placeholder: https://...
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it fits the list
+      description: One or two sentences against the inclusion bar in CONTRIBUTING.md (factual, no hype)
+    validations:
+      required: true
+  - type: dropdown
+    id: section
+    attributes:
+      label: Which section does it belong in?
+      options:
+        - Specifications and standards
+        - Certification
+        - The Archi tool
+        - Plugins and collaboration
+        - Books
+        - Example models
+        - TOGAF alignment
+        - Communities
+    validations:
+      required: true
+  - type: checkboxes
+    id: bar
+    attributes:
+      label: Inclusion bar (see CONTRIBUTING.md)
+      options:
+        - label: Genuinely about ArchiMate, the Archi tool and its plugins, or EA modeling practice around them
+          required: true
+        - label: Substantive (teaches, demonstrates, specifies, or provides something usable); not pure marketing
+          required: true
+        - label: The link is live right now
+          required: true
+        - label: It isn't already in the list (canonical-URL rule, CONTRIBUTING.md)
+          required: true
+        - label: Licence and access are clean (publicly accessible; we link, we never re-host; not paywalled or request-only)
+          required: true

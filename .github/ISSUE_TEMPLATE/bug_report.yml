@@ -1,0 +1,47 @@
+name: Bug report
+description: Report a dead link, wrong entry, or list defect
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: input
+    id: entry-url
+    attributes:
+      label: Affected entry URL (if any)
+      description: Canonical URL of the list entry, if this is about one resource
+    validations:
+      required: false
+  - type: dropdown
+    id: problem-type
+    attributes:
+      label: Problem type
+      options:
+        - Dead or broken link
+        - Wrong or misleading description
+        - Duplicate entry
+        - Wrong tags or year
+        - Formatting or CI failure
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: list-version
+    attributes:
+      label: List version
+      description: From README Version section or git tag (for example 0.1.0)
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: What you expected and what you saw
+    validations:
+      required: true
+  - type: checkboxes
+    id: hygiene
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues for duplicates
+          required: true
