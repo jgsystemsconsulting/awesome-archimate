@@ -23,10 +23,6 @@ See [Editorial neutrality](CONTRIBUTING.md#editorial-neutrality).
 - [Example models](#example-models)
 - [TOGAF alignment](#togaf-alignment)
 - [Communities](#communities)
-- [Install](#install)
-- [Usage](#usage)
-- [Support](#support)
-- [Version](#version)
 
 ## Specifications and standards
 
@@ -100,7 +96,7 @@ git clone https://github.com/jgsystemsconsulting/awesome-archimate.git
 - Security issues: [private security advisory](https://github.com/jgsystemsconsulting/awesome-archimate/security/advisories/new)
   (see [SECURITY.md](SECURITY.md))
 - Capella and Arcadia resources belong on the sibling list:
-  [awesome-capella issues](https://github.com/jgsystemsconsulting/awesome-capella/issues)
+  [awesome-capella](https://github.com/jgsystemsconsulting/awesome-capella)
 
 ## Version
 
