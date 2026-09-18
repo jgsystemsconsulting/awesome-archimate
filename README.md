@@ -1,5 +1,11 @@
 # Awesome ArchiMate [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
+<p align="right">
+  <a href="https://jgsystemsconsulting.github.io/awesome-archimate/">
+    <img src="media/logo.svg" width="256" alt="list mark">
+  </a>
+</p>
+
 > A curated, vetted, dated list of ArchiMate resources: Open Group specifications and
 > certification, the Archi tool and its plugins, books, and openable example models.
 
@@ -99,8 +105,6 @@ git clone https://github.com/jgsystemsconsulting/awesome-archimate.git
   (see [SECURITY.md](SECURITY.md))
 - Capella and Arcadia resources belong on the sibling list:
   [awesome-capella issues](https://github.com/jgsystemsconsulting/awesome-capella/issues)
-- Licence: this list is [CC0 1.0 Universal](LICENSE). Linked resources keep their
-  own licences. Licence enquiries: [labs licensing form](https://labs.jgsystemsconsulting.com/licensing.html).
 
 ## Version
 

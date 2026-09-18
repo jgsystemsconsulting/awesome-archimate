@@ -6,3 +6,6 @@ __pycache__/
 *.bak
 .DS_Store
 Thumbs.db
+# Local SA / link-check artifacts
+docs/superpowers/sa-audit-*.json
+sa-audit-*.json
