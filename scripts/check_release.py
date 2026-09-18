@@ -146,6 +146,40 @@ if chip_entries is not None:
     elif curated_count is not None and int(chip_entries) != curated_count:
         fails.append(f"landing entries chip {chip_entries} != curated count {curated_count}")
 
+
+def github_slug(title):
+    return re.sub(r"[^\w\s-]", "", title.lower()).strip().replace(" ", "-")
+
+
+for title, hits in heading_hits.items():
+    if hits == 0:
+        fails.append(f"curated heading missing from README: {title}")
+    elif hits > 1:
+        fails.append(f"curated heading duplicated in README ({hits}x): {title}")
+
+if html is not None:
+    blocks = re.findall(r'<ul class="section-index">(.*?)</ul>', html, re.DOTALL)
+    if len(blocks) != 1:
+        fails.append(f"landing section-index list missing or ambiguous: {len(blocks)} found")
+    else:
+        lis = re.findall(r"<li\b[^>]*>.*?</li>", blocks[0], re.DOTALL)
+        if len(lis) != 8:
+            fails.append(f"section-index li count {len(lis)} != 8")
+        else:
+            fragments = []
+            for li in lis:
+                hrefs = re.findall(r'href="[^"#]*#([^"]+)"', li)
+                if len(hrefs) != 1:
+                    fails.append(f"section-index li href missing or ambiguous: {li[:60]}")
+                    fragments = None
+                    break
+                fragments.append(hrefs[0])
+            if fragments is not None:
+                expected = [github_slug(t) for t in CURATED_SECTIONS]
+                for got, want in zip(fragments, expected):
+                    if got != want:
+                        fails.append(f"section-index fragment mismatch: {got} != {want}")
+
 if scanned < 1:
     fails.append("SCAN_GLOBS matched zero files")
 
