@@ -1,0 +1,1 @@
+IBM Plex Sans + Mono woff2 from npm package @ibm/plex 6.4.1 (github.com/IBM/plex), SIL Open Font License 1.1
