@@ -1,5 +1,12 @@
 Awesome ArchiMate
 Copyright (c) 2026 JG Systems Consulting Ltd.
 
-Third-party components are not distributed with this repository. The list only
-links to external resources; each linked resource remains under its own licence.
+The curated list content is dedicated to the public domain under CC0-1.0 (see LICENSE).
+Linked upstream resources remain under their own licences; this repository does not
+re-host those resources.
+
+Vendored third-party fonts (self-hosted for the GitHub Pages landing only):
+  IBM Plex Sans and IBM Plex Mono (woff2), obtained from IBM/plex (npm package @ibm/plex 6.4.1).
+  Licensed under the SIL Open Font License 1.1. Full license text: docs/fonts/OFL.txt.
+  Font files live under docs/fonts/ and are referenced only via relative URLs in page CSS.
+  No remote font CDN is used.

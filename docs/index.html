@@ -11,54 +11,483 @@
   <meta property="og:url" content="https://jgsystemsconsulting.github.io/awesome-archimate/">
   <meta property="og:type" content="website">
   <style>
-    :root { color-scheme: light dark; }
+    @font-face {
+      font-family: "IBM Plex Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("fonts/IBMPlexSans-Regular.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "IBM Plex Sans";
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url("fonts/IBMPlexSans-Medium.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "IBM Plex Sans";
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url("fonts/IBMPlexSans-SemiBold.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("fonts/IBMPlexMono-Regular.woff2") format("woff2");
+    }
+
+    :root {
+      --color-bg: oklch(0.985 0.006 255);
+      --color-surface-1: oklch(0.995 0.005 255);
+      --color-surface-2: oklch(0.998 0.004 255);
+      --color-surface-3: oklch(1.0 0 0);
+      --color-primary: oklch(0.19 0.015 260);
+      --color-accent: oklch(0.58 0.17 253);
+      --color-text: oklch(0.17 0.012 258);
+      --color-text-muted: oklch(0.50 0.012 258);
+      --color-border: oklch(0.915 0.008 255);
+      --color-focus-ring: var(--color-accent);
+      --color-success: oklch(0.45 0.10 150);
+      --color-danger: oklch(0.50 0.14 25);
+      --color-attention: oklch(0.55 0.12 85);
+
+      --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+      --text-meta: 0.8rem;   /* 12.8px */
+      --text-body: 1rem;     /* 16px */
+      --text-h3: 1.25rem;    /* 20px */
+      --text-h2: 1.5625rem;  /* 25px */
+      --text-h1: 1.9375rem;  /* 31px */
+
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 16px;
+      --space-4: 32px;
+      --space-5: 56px;
+      --space-section: 80px;
+
+      --radius-sm: 3px;
+      --radius-md: 5px;
+      --radius-lg: 7px;
+
+      --shell-max: 1120px;
+      --prose-max: 70ch;
+
+      color-scheme: light;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.5;
-      max-width: 42rem;
-      padding: 1.5rem;
+      font-family: var(--font-sans);
+      font-size: var(--text-body);
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
     }
-    a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+    a {
+      color: var(--color-accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.15em;
+      transition: color 160ms ease-out;
+    }
+
+    a:hover {
+      color: var(--color-primary);
+    }
+
+    a:focus-visible,
+    .primary:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 2px;
+    }
+
+    .shell {
+      width: min(100% - 2 * var(--space-3), var(--shell-max));
+      margin-inline: auto;
+    }
+
+    .prose {
+      max-width: var(--prose-max);
+    }
+
+    /* Nav */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .site-nav .shell {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-2) var(--space-3);
+      padding-block: var(--space-2);
+      min-height: 48px;
+    }
+
+    .site-nav a {
+      font-size: var(--text-meta);
+      font-weight: 500;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      padding: var(--space-2) var(--space-1);
+    }
+
+    .site-nav a:hover {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+
+    .site-nav .nav-full {
+      margin-inline-start: auto;
+      color: var(--color-accent);
+    }
+
+    /* Main sections */
+    main {
+      display: block;
+    }
+
+    section {
+      padding-block: var(--space-section);
+    }
+
+    section + section {
+      border-top: 1px solid var(--color-border);
+    }
+
+    h1, h2, h3 {
+      color: var(--color-primary);
+      line-height: 1.25;
+      margin: 0 0 var(--space-3);
+    }
+
+    h1 {
+      font-size: var(--text-h1);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: var(--text-h2);
+      font-weight: 600;
+      letter-spacing: -0.015em;
+    }
+
+    h3 {
+      font-size: var(--text-h3);
+      font-weight: 500;
+    }
+
+    p {
+      margin: 0 0 var(--space-3);
+      color: var(--color-text);
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    .muted {
+      color: var(--color-text-muted);
+    }
+
+    /* Hero */
+    #hero {
+      padding-block: var(--space-5) var(--space-section);
+    }
+
+    #hero .claim {
+      font-size: var(--text-body);
+      max-width: var(--prose-max);
+      margin-bottom: var(--space-3);
+    }
+
+    #hero .support {
+      color: var(--color-text-muted);
+      max-width: var(--prose-max);
+      margin-bottom: var(--space-4);
+    }
+
+    .primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 var(--space-4);
+      font-family: var(--font-sans);
+      font-size: var(--text-body);
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--color-surface-3);
+      background: var(--color-accent);
+      border: 1px solid var(--color-accent);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      box-shadow: 0 1px 2px color-mix(in oklch, var(--color-primary) 12%, transparent);
+      transition: background-color 160ms ease-out, border-color 160ms ease-out, color 160ms ease-out;
+    }
+
+    .primary:hover {
+      color: var(--color-surface-3);
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    /* Evidence */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin: 0 0 var(--space-4);
+      padding: 0;
+      list-style: none;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: baseline;
+      gap: var(--space-2);
+      padding: var(--space-1) var(--space-2);
+      font-family: var(--font-mono);
+      font-size: var(--text-meta);
+      font-variant-numeric: tabular-nums;
+      color: var(--color-text-muted);
+      background: var(--color-surface-1);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+    }
+
+    .chip dt {
+      font-weight: 400;
+      margin: 0;
+    }
+
+    .chip dd {
+      margin: 0;
+      color: var(--color-text);
+      font-weight: 400;
+    }
+
+    .family {
+      max-width: var(--prose-max);
+      color: var(--color-text-muted);
+      font-size: var(--text-body);
+    }
+
+    /* Sections index */
+    .section-index {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .section-index li {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .section-index a {
+      display: block;
+      padding: var(--space-3) 0;
+      font-weight: 500;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+
+    .section-index a:hover {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+
+    @media (min-width: 1024px) {
+      .section-index {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: var(--space-4);
+      }
+
+      .section-index li:nth-child(odd) {
+        padding-inline-end: var(--space-3);
+      }
+
+      .section-index li:nth-child(even) {
+        padding-inline-start: var(--space-3);
+        border-inline-start: 1px solid var(--color-border);
+      }
+    }
+
+    /* Contribute */
+    .link-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-width: var(--prose-max);
+    }
+
+    .link-list li {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .link-list li:first-child {
+      border-top: 1px solid var(--color-border);
+    }
+
+    .link-list a {
+      display: block;
+      padding: var(--space-3) 0;
+      font-weight: 500;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+
+    .link-list a:hover {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--color-border);
+      padding-block: var(--space-4);
+      font-size: var(--text-meta);
+      color: var(--color-text-muted);
+    }
+
+    .site-footer p {
+      margin: 0;
+      color: var(--color-text-muted);
+    }
+
+    .site-footer a {
+      font-weight: 500;
+    }
+
     @media (prefers-reduced-motion: reduce) {
-      * { animation: none !important; transition: none !important; }
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
     }
-    header { margin-bottom: 1.5rem; }
-    h1 { font-size: 1.75rem; margin: 0 0 0.5rem; }
-    .meta { opacity: 0.85; font-size: 0.95rem; }
-    ul { padding-left: 1.2rem; }
-    footer { margin-top: 2rem; font-size: 0.9rem; opacity: 0.9; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Awesome ArchiMate</h1>
-    <p class="meta">Curated ArchiMate resources for enterprise architecture and MBSE practitioners. Version 0.1.0.</p>
-  </header>
+  <nav class="site-nav" aria-label="Page">
+    <div class="shell">
+      <a href="#hero">Hero</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#sections">Sections</a>
+      <a href="#curation">Curation</a>
+      <a href="#contribute">Contribute</a>
+      <a class="nav-full" href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md">Full list</a>
+    </div>
+  </nav>
+
   <main>
-    <p>
-      This is a public-domain (CC0) curated index of Open Group ArchiMate
-      specifications and certification, the Archi tool and its plugins, books,
-      and openable example models. Nothing to install: open the list and follow
-      the links.
-    </p>
-    <h2>First run</h2>
-    <ol>
-      <li>Open the full list on GitHub (README with searchable Contents).</li>
-      <li>Jump to a section that matches your work (specifications, tool, plugins, models).</li>
-      <li>Suggest a resource or report a dead link via the repository issue forms.</li>
-    </ol>
-    <h2>Links</h2>
-    <ul>
-      <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate">GitHub repository and full README</a></li>
-      <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/CONTRIBUTING.md">How to contribute</a></li>
-      <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=suggest-resource.yml">Suggest a resource</a></li>
-      <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=bug_report.yml">Report a bug or dead link</a></li>
-      <li><a href="https://labs.jgsystemsconsulting.com/licensing.html">Licence enquiries</a></li>
-    </ul>
+    <section id="hero">
+      <div class="shell">
+        <h1>Awesome ArchiMate</h1>
+        <p class="claim">Curated ArchiMate resources for enterprise architecture and MBSE practitioners.</p>
+        <p class="support">Open the full list on GitHub for searchable Contents, then jump to the section that matches your work.</p>
+        <a class="primary" href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md">Open full list on GitHub</a>
+      </div>
+    </section>
+
+    <section id="evidence" aria-labelledby="evidence-heading">
+      <div class="shell">
+        <h2 id="evidence-heading">Evidence</h2>
+        <dl class="chips">
+          <div class="chip">
+            <dt>version</dt>
+            <dd>0.1.0</dd>
+          </div>
+          <div class="chip">
+            <dt>sweep</dt>
+            <dd>2026-09</dd>
+          </div>
+          <div class="chip">
+            <dt>entries</dt>
+            <dd>17</dd>
+          </div>
+        </dl>
+        <p class="family">Part of the awesome-mbse list family; registry and family rules live in FAMILY.md in the jgsystemsconsulting/awesome-mbse repository.</p>
+      </div>
+    </section>
+
+    <section id="sections" aria-labelledby="sections-heading">
+      <div class="shell">
+        <h2 id="sections-heading">Sections</h2>
+        <p class="muted prose">Eight README anchors. Open a section on GitHub; the landing does not mirror entry rows.</p>
+        <ul class="section-index">
+          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md#specifications-and-standards">Specifications and standards</a></li>
+          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md#certification">Certification</a></li>
+          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md#the-archi-tool">The Archi tool</a></li>
+          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md#plugins-and-collaboration">Plugins and collaboration</a></li>
+          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md#books">Books</a></li>
+          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md#example-models">Example models</a></li>
+          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md#togaf-alignment">TOGAF alignment</a></li>
+          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md#communities">Communities</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="curation" aria-labelledby="curation-heading">
+      <div class="shell">
+        <h2 id="curation-heading">Curation</h2>
+        <p class="prose">Public-domain (CC0) curated index of ArchiMate specifications, certification, the Archi tool and plugins, books, and openable example models. Nothing to install. The list does not re-host upstream content; follow each link to the source.</p>
+      </div>
+    </section>
+
+    <section id="contribute" aria-labelledby="contribute-heading">
+      <div class="shell">
+        <h2 id="contribute-heading">Contribute</h2>
+        <p class="muted prose">Suggest a resource or report a dead link via the repository issue forms.</p>
+        <ul class="link-list">
+          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/CONTRIBUTING.md">How to contribute</a></li>
+          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=suggest-resource.yml">Suggest a resource</a></li>
+          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=bug_report.yml">Report a bug or dead link</a></li>
+        </ul>
+      </div>
+    </section>
   </main>
-  <footer>
-    <p>Maintained by JG Systems Consulting Ltd. Licence: <a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/LICENSE">CC0-1.0</a>.</p>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <p>
+        Licence: <a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/LICENSE">CC0-1.0</a>.
+        <a href="https://labs.jgsystemsconsulting.com/licensing.html">Licence enquiries</a>.
+        Maintained by JG Systems Consulting Ltd.
+      </p>
+    </div>
   </footer>
 </body>
 </html>
