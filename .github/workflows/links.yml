@@ -25,17 +25,19 @@ jobs:
         id: lychee
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
         with:
-          args: --no-progress --max-retries 3 --include-fragments=anchor-only README.md
+          args: --no-progress --max-retries 3 --include-fragments=anchor-only README.md docs/index.html
           fail: false
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Advisory broken-link warning
+      - name: Fail pull request on broken product-surface links
         if: github.event_name == 'pull_request' && steps.lychee.outputs.exit_code != 0
         run: |
           {
             echo "Lychee exit code: ${{ steps.lychee.outputs.exit_code }}."
-            echo "Broken or unreachable links were found. This check is advisory and does not block merge; see the Link Checker step log for the URL list."
+            echo "Broken or unreachable links on the product surface (README.md, docs/index.html)."
+            echo "This check blocks merge on pull_request. See the Link Checker step log for the URL list."
           } >> "$GITHUB_STEP_SUMMARY"
-          echo "::warning::Lychee found unreachable links (exit code ${{ steps.lychee.outputs.exit_code }}); advisory only, see the Link Checker step log"
+          echo "::error::Lychee found unreachable links (exit code ${{ steps.lychee.outputs.exit_code }}); blocking on pull_request"
+          exit 1
       - name: Ensure issue labels exist
         if: github.event_name != 'pull_request'
         env:
