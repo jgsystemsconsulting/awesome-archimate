@@ -23,4 +23,4 @@
 
 - [ ] Existing entries and the `## Contents` block are untouched
 - [ ] No em dash anywhere in the diff
-- [ ] If this changes version-bearing files (CHANGELOG.md, RELEASE-INFO.txt, CITATION.cff), they are updated together
+- [ ] If this changes version-bearing files (CHANGELOG.md, RELEASE-INFO.txt, CITATION.cff, docs/index.html), they are updated together
