@@ -97,6 +97,55 @@ if readme is not None:
                 f"landing sweep chip {chip_sweep} != README sweep badge {sweep_hits[0]}"
             )
 
+CURATED_SECTIONS = (
+    "Specifications and standards", "Certification", "The Archi tool",
+    "Plugins and collaboration", "Books", "Example models", "TOGAF alignment",
+    "Communities",
+)
+ENTRY_RX = re.compile(r"^- \[[^\]]+\]\(https?://[^)\s]+\)\s+-\s+.+\(\d{4}\)\.$")
+
+
+def curated_walk(readme):
+    """Count grammar-valid bullets under curated headings and tally exact ## hits."""
+    count = 0
+    heading_hits = {title: 0 for title in CURATED_SECTIONS}
+    current = None
+    in_fence = False
+    for raw in readme.splitlines():
+        line = raw.strip()
+        if line.startswith("```"):
+            in_fence = not in_fence
+            continue
+        if in_fence:
+            continue
+        stripped = line.strip()
+        if stripped.startswith("## ") and not stripped.startswith("###"):
+            # Exact presence uses stripped == "## " + title for curated titles only
+            current = stripped[3:].strip()
+            if stripped == "## " + current and current in heading_hits:
+                heading_hits[current] += 1
+            continue
+        if current in heading_hits and line and re.match(r"^[-*] \[", line):
+            probe = "- " + line[2:] if line.startswith("* ") else line
+            if ENTRY_RX.match(probe):
+                count += 1
+            else:
+                fails.append(f"curated entry malformed in {current}: {line[:60]}")
+    return count, heading_hits
+
+
+curated_count = None
+heading_hits = {}
+if readme is not None:
+    curated_count, heading_hits = curated_walk(readme)
+
+chip_entries = landing_chip(html, "entries") if html is not None else None
+if chip_entries is not None:
+    if not re.fullmatch(r"[0-9]+", chip_entries):
+        fails.append(f"landing entries chip not an integer: {chip_entries}")
+    elif curated_count is not None and int(chip_entries) != curated_count:
+        fails.append(f"landing entries chip {chip_entries} != curated count {curated_count}")
+
 if scanned < 1:
     fails.append("SCAN_GLOBS matched zero files")
 
