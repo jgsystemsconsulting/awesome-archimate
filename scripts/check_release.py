@@ -51,6 +51,52 @@ for path in pathlib.Path("scripts").glob("*.py"):
     if "SPDX-License-Identifier: CC0-1.0" not in head:
         fails.append(f"SPDX missing: {path}")
 
+# --- landing truth gate (P2): landing chips and section index vs sources ---
+
+def read_source(path):
+    try:
+        return pathlib.Path(path).read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError):
+        fails.append(f"unreadable source file: {path}")
+        return None
+
+
+def landing_chip(html, name):
+    hits = re.findall(rf"<dt>{re.escape(name)}</dt>\s*<dd>([^<]*)</dd>", html)
+    if len(hits) != 1:
+        fails.append(f"landing chip missing or ambiguous: {name}")
+        return None
+    return hits[0].strip()
+
+
+release_info = read_source("RELEASE-INFO.txt")
+readme = read_source("README.md")
+html = read_source("docs/index.html")
+
+if release_info is not None:
+    version_hits = re.findall(r"(?m)^Version: (\S+)\s*$", release_info)
+    if len(version_hits) != 1:
+        fails.append(
+            f"RELEASE-INFO Version field missing or ambiguous: {len(version_hits)} matches"
+        )
+    else:
+        chip_version = landing_chip(html, "version") if html is not None else None
+        if chip_version is not None and chip_version != version_hits[0]:
+            fails.append(
+                f"landing version chip {chip_version} != RELEASE-INFO Version {version_hits[0]}"
+            )
+
+if readme is not None:
+    sweep_hits = re.findall(r"!\[Last full sweep: (\d{4}-\d{2})\]", readme)
+    if len(sweep_hits) != 1:
+        fails.append(f"README sweep badge missing or ambiguous: {len(sweep_hits)} matches")
+    else:
+        chip_sweep = landing_chip(html, "sweep") if html is not None else None
+        if chip_sweep is not None and chip_sweep != sweep_hits[0]:
+            fails.append(
+                f"landing sweep chip {chip_sweep} != README sweep badge {sweep_hits[0]}"
+            )
+
 if scanned < 1:
     fails.append("SCAN_GLOBS matched zero files")
 
