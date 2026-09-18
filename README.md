@@ -1,10 +1,6 @@
 # Awesome ArchiMate [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-<p align="right">
-  <a href="https://jgsystemsconsulting.github.io/awesome-archimate/">
-    <img src="media/logo.svg" width="256" alt="list mark">
-  </a>
-</p>
+[<img src="media/logo.svg" align="right" width="100" alt="ArchiMate">](https://jgsystemsconsulting.github.io/awesome-archimate/)
 
 > A curated, vetted, dated list of ArchiMate resources: Open Group specifications and
 > certification, the Archi tool and its plugins, books, and openable example models.
