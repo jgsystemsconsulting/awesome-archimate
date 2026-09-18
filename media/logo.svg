@@ -6,9 +6,7 @@
       <stop offset="100%" stop-color="#0f4c81"/>
     </linearGradient>
   </defs>
-  <!-- transparent canvas; soft rounded tile -->
   <rect x="16" y="16" width="224" height="224" rx="48" fill="url(#g)"/>
-  <!-- subtle inner highlight -->
   <rect x="28" y="28" width="200" height="200" rx="40" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="2"/>
   <text x="128" y="150" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="56" font-weight="700" fill="#ffffff" letter-spacing="-1">AM</text>
 </svg>
