@@ -10,6 +10,8 @@
 Part of the awesome-mbse list family; the registry and family rules live in FAMILY.md
 in the jgsystemsconsulting/awesome-mbse repository.
 
+People and organizations behind these resources: [awesome-mbse-community](https://github.com/jgsystemsconsulting/awesome-mbse-community).
+
 Maintained by [JG Systems Consulting Ltd.](https://github.com/jgsystemsconsulting).
 See [Editorial neutrality](CONTRIBUTING.md#editorial-neutrality).
 
