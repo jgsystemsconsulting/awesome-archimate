@@ -25,6 +25,10 @@ See [Editorial neutrality](CONTRIBUTING.md#editorial-neutrality).
 - [Example models](#example-models)
 - [TOGAF alignment](#togaf-alignment)
 - [Communities](#communities)
+- [Install](#install)
+- [Usage](#usage)
+- [Support](#support)
+- [Version](#version)
 
 ## Specifications and standards
 
