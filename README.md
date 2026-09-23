@@ -109,4 +109,3 @@ Copyright (c) 2026 JG Systems Consulting Ltd. See [LICENSE](LICENSE). No purchas
 
 Current release: **0.1.0** (2026-09-17). See [CHANGELOG.md](CHANGELOG.md) and
 [RELEASE-INFO.txt](RELEASE-INFO.txt).
-
