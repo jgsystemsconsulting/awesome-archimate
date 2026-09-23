@@ -17,3 +17,6 @@ sa-audit-*.json
 .worktrees/
 ~$*
 .~lock.*#
+
+# maintainer-only planning artifacts (RR-B-35)
+docs/superpowers/
