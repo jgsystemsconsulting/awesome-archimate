@@ -34,3 +34,10 @@ jobs:
           globs: |
             README.md
             CONTRIBUTING.md
+
+      - name: No email addresses in README (People policy clause 3)
+        run: |
+          if grep -nE '\b[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z0-9-.]+\b' README.md; then
+            echo "::error::Email address found in README.md; People policy clause 3 forbids it."
+            exit 1
+          fi
