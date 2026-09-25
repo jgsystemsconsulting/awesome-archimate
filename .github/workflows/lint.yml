@@ -25,7 +25,7 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 20
-      # Blocking maturity gate (docs/MATURITY.md): do not remove or set continue-on-error.
+      # Blocking maturity gate (internal/MATURITY.md): do not remove or set continue-on-error.
       - name: awesome-lint
         run: npx awesome-lint@2.3.0 README.md
       - name: markdownlint

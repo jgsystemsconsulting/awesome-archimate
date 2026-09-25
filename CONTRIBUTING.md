@@ -1,6 +1,6 @@
 # Contributing to Awesome ArchiMate
 
-**Lint is mandatory.** awesome-lint on README.md must pass on every push/PR to main. See [docs/MATURITY.md](docs/MATURITY.md).
+**Lint is mandatory.** awesome-lint on README.md must pass on every push/PR to main. See [internal/MATURITY.md](internal/MATURITY.md).
 
 Thanks for helping keep this the best-curated ArchiMate index anywhere. Read this
 before opening a PR: CI gates enforce most of it.

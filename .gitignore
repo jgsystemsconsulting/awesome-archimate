@@ -7,7 +7,7 @@ __pycache__/
 .DS_Store
 Thumbs.db
 # Local SA / link-check artifacts
-docs/superpowers/sa-audit-*.json
+internal/superpowers/sa-audit-*.json
 sa-audit-*.json
 
 # Scratch workspaces, tool caches, Office lock files (OneDrive checkout)
@@ -19,4 +19,4 @@ sa-audit-*.json
 .~lock.*#
 
 # maintainer-only planning artifacts (RR-B-35)
-docs/superpowers/
+internal/superpowers/

@@ -7,7 +7,7 @@
 :root{
   --ink:#f6f4ee; --ink-2:#fdfcf8; --ink-3:#efece2; --ink-4:#e5e1d3;
   --line:#dcd7c9; --line-2:#cbc5b4;
-  --mute:#6e6a5e; --mute-2:#8a8578;
+  --mute:#6e6a5e; --mute-2:#6e6a5e; /* fleet QA 2026-09-25: mute-2 raised from #8a8578 for 4.5:1 on paper (WCAG AA body text) */
   --text:#3d3b33; --text-hi:#14130f;
   --paper:#14130f; --paper-ink:#f6f4ee;
   --mono:'JetBrains Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
@@ -41,7 +41,7 @@ nav.site .brand img{display:block;}
 .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:2rem;}
 .btn{font:700 .8125rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:14px 20px;border:1px solid var(--line);display:inline-flex;gap:.6em;align-items:center;transition:background .15s,border-color .15s,color .15s;}
 .btn-primary{background:var(--paper);color:var(--paper-ink);border-color:var(--paper);}
-.btn-primary:hover{background:#fff;}
+.btn-primary:hover{background:#fff;color:var(--text-hi);} /* fleet QA 2026-09-25: keep dark ink when the hover bg goes light */
 .btn-ghost{background:transparent;color:var(--text-hi);}
 .btn-ghost:hover{border-color:var(--paper);}
 section{padding:var(--pad-section) 0;border-bottom:1px solid var(--line);}
@@ -86,9 +86,26 @@ footer{padding:var(--pad-section) 0;}
 .hero-media figcaption{margin-top:.6rem;color:var(--mute-2);font-size:.85rem;font-family:var(--mono);}
 @media (max-width:920px){.hero-grid{grid-template-columns:1fr;gap:2rem;}}
 
-/* Footer: tblock grid + cells + note */
-.tblock{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
-.tcell{background:var(--ink-2);padding:18px 24px;}
-.tcell .tl{display:block;margin-bottom:.4rem;font:700 .6875rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);}
-.tcell b{color:var(--text);font:700 .875rem var(--mono);}
-.fnote{margin-top:1.5rem;font:400 .8125rem/1.6 var(--mono);color:var(--mute);}
+/* Fleet QA fixes 2026-09-25: component rules the shell lacked (chips, section lists). */
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+.chips .chip{background:var(--ink-2);padding:18px 24px;}
+.chips dt{display:block;margin-bottom:.4rem;font:700 .6875rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);}
+.chips dd{color:var(--text);font:700 .875rem var(--mono);}
+.section-index,.link-list{list-style:none;border-top:1px solid var(--line);}
+.section-index li,.link-list li{border-bottom:1px solid var(--line);}
+.section-index a,.link-list a{display:block;padding:14px 0;border-bottom:0;color:var(--text);}
+.section-index a:hover,.link-list a:hover{color:var(--text-hi);}
+@media (max-width:860px){.chips{grid-template-columns:1fr;}}
+
+/* Fleet QA fixes 2026-09-25 (awesome-archimate): entry-list rules this repo's curated sections need. */
+.entries{list-style:none;margin-top:0;border-top:1px solid var(--line);}
+.entries li{border-bottom:1px solid var(--line);}
+.entries a{display:block;padding:14px 0 2px;border-bottom:0;color:var(--text);font-weight:600;}
+.entries a:hover{color:var(--text-hi);}
+.entries .etags{display:block;padding:0 0 14px;font:400 .75rem/1.6 var(--mono);color:var(--mute);}
+.family{margin-top:1.25rem;color:var(--mute-2);}
+.link-list li{padding:14px 0;}
+.link-list a{display:inline;padding:0;}
+.lead + .chips{margin-top:1.5rem;}
+.sheet{margin-top:1.5rem;}
+.sheet + .lead,.link-list + .lead{margin-top:1.25rem;}
