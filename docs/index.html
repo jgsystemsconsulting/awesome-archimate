@@ -1,495 +1,196 @@
-<!DOCTYPE html>
+<!doctype html>
+<!-- Copyright (c) 2026 JG Systems Consulting Ltd. See LICENSE. -->
+<!-- Built from the jgs-site-template shell: edit site.config.json, run tools/build.py. -->
+<!-- SPDX-License-Identifier: MIT -->
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Awesome ArchiMate</title>
-  <meta name="description" content="Curated ArchiMate resources for enterprise architecture and MBSE practitioners.">
-  <link rel="canonical" href="https://jgsystemsconsulting.github.io/awesome-archimate/">
-  <meta property="og:title" content="Awesome ArchiMate">
-  <meta property="og:description" content="Curated ArchiMate resources for enterprise architecture and MBSE practitioners.">
-  <meta property="og:url" content="https://jgsystemsconsulting.github.io/awesome-archimate/">
-  <meta property="og:type" content="website">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23157adb'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='17' font-weight='600' fill='%23ffffff' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
-  <link rel="preload" href="fonts/IBMPlexSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/IBMPlexSans-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
-  <style>
-    @font-face {
-      font-family: "IBM Plex Sans";
-      font-style: normal;
-      font-weight: 400;
-      font-display: swap;
-      src: url("fonts/IBMPlexSans-Regular.woff2") format("woff2");
-    }
-    @font-face {
-      font-family: "IBM Plex Sans";
-      font-style: normal;
-      font-weight: 500;
-      font-display: swap;
-      src: url("fonts/IBMPlexSans-Medium.woff2") format("woff2");
-    }
-    @font-face {
-      font-family: "IBM Plex Sans";
-      font-style: normal;
-      font-weight: 600;
-      font-display: swap;
-      src: url("fonts/IBMPlexSans-SemiBold.woff2") format("woff2");
-    }
-    @font-face {
-      font-family: "IBM Plex Mono";
-      font-style: normal;
-      font-weight: 400;
-      font-display: swap;
-      src: url("fonts/IBMPlexMono-Regular.woff2") format("woff2");
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Awesome ArchiMate</title>
+<meta name="description" content="A curated, vetted, dated list of ArchiMate resources: Open Group specifications and certification, the Archi tool and its plugins, books, and openable example models.">
+<link rel="canonical" href="https://jgsystemsconsulting.github.io/awesome-archimate/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2314130f'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='17' font-weight='700' fill='%23f6f4ee' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="site.css?v=20260925a">
 
-    :root {
-      --color-bg: oklch(0.985 0.006 255);
-      --color-surface-1: oklch(0.995 0.005 255);
-      --color-surface-2: oklch(0.998 0.004 255);
-      --color-surface-3: oklch(1.0 0 0);
-      --color-primary: oklch(0.19 0.015 260);
-      --color-accent: oklch(0.58 0.17 253);
-      --color-text: oklch(0.17 0.012 258);
-      --color-text-muted: oklch(0.50 0.012 258);
-      --color-border: oklch(0.915 0.008 255);
-      --color-focus-ring: var(--color-accent);
-      --color-success: oklch(0.45 0.10 150);
-      --color-danger: oklch(0.50 0.14 25);
-      --color-attention: oklch(0.55 0.12 85);
-
-      --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-      --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-
-      --text-meta: 0.8rem;   /* 12.8px */
-      --text-body: 1rem;     /* 16px */
-      --text-h3: 1.25rem;    /* 20px */
-      --text-h2: 1.5625rem;  /* 25px */
-      --text-h1: 1.9375rem;  /* 31px */
-
-      --space-1: 4px;
-      --space-2: 8px;
-      --space-3: 16px;
-      --space-4: 32px;
-      --space-5: 56px;
-      --space-section: 80px;
-
-      --radius-sm: 3px;
-      --radius-md: 5px;
-      --radius-lg: 7px;
-
-      --shell-max: 1120px;
-      --prose-max: 70ch;
-
-      color-scheme: light;
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: var(--font-sans);
-      font-size: var(--text-body);
-      font-weight: 400;
-      line-height: 1.55;
-      color: var(--color-text);
-      background: var(--color-bg);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: var(--color-accent);
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.15em;
-      transition: color 160ms ease-out;
-    }
-
-    a:hover {
-      color: var(--color-primary);
-    }
-
-    a:focus-visible,
-    .primary:focus-visible,
-    button:focus-visible {
-      outline: 2px solid var(--color-focus-ring);
-      outline-offset: 2px;
-    }
-
-    .shell {
-      width: min(100% - 2 * var(--space-3), var(--shell-max));
-      margin-inline: auto;
-    }
-
-    .prose {
-      max-width: var(--prose-max);
-    }
-
-    /* Nav */
-    .site-nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: var(--color-bg);
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .site-nav .shell {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: var(--space-2) var(--space-3);
-      padding-block: var(--space-2);
-      min-height: 48px;
-    }
-
-    .site-nav a {
-      font-size: var(--text-meta);
-      font-weight: 500;
-      color: var(--color-text-muted);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      min-height: 44px;
-      padding: var(--space-1) var(--space-1);
-    }
-
-    .site-nav a:hover {
-      color: var(--color-accent);
-      text-decoration: underline;
-    }
-
-    .site-nav .nav-full {
-      margin-inline-start: auto;
-      color: var(--color-accent);
-    }
-
-    /* Main sections */
-    section {
-      padding-block: var(--space-section);
-    }
-
-    section + section {
-      border-top: 1px solid var(--color-border);
-    }
-
-    h1, h2, h3 {
-      color: var(--color-primary);
-      line-height: 1.25;
-      margin: 0 0 var(--space-3);
-    }
-
-    h1 {
-      font-size: var(--text-h1);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-
-    h2 {
-      font-size: var(--text-h2);
-      font-weight: 600;
-      letter-spacing: -0.015em;
-    }
-
-    h3 {
-      font-size: var(--text-h3);
-      font-weight: 500;
-    }
-
-    p {
-      margin: 0 0 var(--space-3);
-      color: var(--color-text);
-    }
-
-    p:last-child {
-      margin-bottom: 0;
-    }
-
-    .muted {
-      color: var(--color-text-muted);
-    }
-
-    /* Hero */
-    #hero {
-      padding-block: var(--space-5) var(--space-section);
-    }
-
-    #hero .claim {
-      font-size: var(--text-body);
-      max-width: var(--prose-max);
-      margin-bottom: var(--space-3);
-    }
-
-    #hero .support {
-      color: var(--color-text-muted);
-      max-width: var(--prose-max);
-      margin-bottom: var(--space-4);
-    }
-
-    .primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 0 var(--space-4);
-      font-family: var(--font-sans);
-      font-size: var(--text-body);
-      font-weight: 500;
-      line-height: 1.2;
-      color: var(--color-surface-3);
-      background: var(--color-accent);
-      border: 1px solid var(--color-accent);
-      border-radius: var(--radius-md);
-      text-decoration: none;
-      box-shadow: 0 1px 2px color-mix(in oklch, var(--color-primary) 12%, transparent);
-      transition: background-color 160ms ease-out, border-color 160ms ease-out, color 160ms ease-out;
-    }
-
-    .primary:hover {
-      color: var(--color-surface-3);
-      background: var(--color-primary);
-      border-color: var(--color-primary);
-      text-decoration: none;
-    }
-
-    /* Evidence */
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2);
-      margin: 0 0 var(--space-4);
-      padding: 0;
-      list-style: none;
-    }
-
-    .chip {
-      display: inline-flex;
-      align-items: baseline;
-      gap: var(--space-2);
-      padding: var(--space-1) var(--space-2);
-      font-family: var(--font-mono);
-      font-size: var(--text-meta);
-      font-variant-numeric: tabular-nums;
-      color: var(--color-text-muted);
-      background: var(--color-surface-1);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-sm);
-    }
-
-    .chip dt {
-      font-weight: 400;
-      margin: 0;
-    }
-
-    .chip dd {
-      margin: 0;
-      color: var(--color-text);
-      font-weight: 400;
-    }
-
-    .family {
-      max-width: var(--prose-max);
-      color: var(--color-text-muted);
-      font-size: var(--text-body);
-    }
-
-    /* Sections index */
-    .section-index {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      border-top: 1px solid var(--color-border);
-    }
-
-    .section-index li {
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .section-index a {
-      display: block;
-      padding: var(--space-3) 0;
-      font-weight: 500;
-      color: var(--color-text);
-      text-decoration: none;
-    }
-
-    .section-index a:hover {
-      color: var(--color-accent);
-      text-decoration: underline;
-    }
-
-    @media (min-width: 1024px) {
-      .section-index {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: var(--space-4);
-      }
-
-      .section-index li:nth-child(odd) {
-        padding-inline-end: var(--space-3);
-      }
-
-      .section-index li:nth-child(even) {
-        padding-inline-start: var(--space-3);
-        border-inline-start: 1px solid var(--color-border);
-      }
-    }
-
-    /* Contribute */
-    .link-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      max-width: var(--prose-max);
-    }
-
-    .link-list li {
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .link-list li:first-child {
-      border-top: 1px solid var(--color-border);
-    }
-
-    .link-list a {
-      display: block;
-      padding: var(--space-3) 0;
-      font-weight: 500;
-      color: var(--color-text);
-      text-decoration: none;
-    }
-
-    .link-list a:hover {
-      color: var(--color-accent);
-      text-decoration: underline;
-    }
-
-    /* Footer */
-    .site-footer {
-      border-top: 1px solid var(--color-border);
-      padding-block: var(--space-4);
-      font-size: var(--text-meta);
-      color: var(--color-text-muted);
-    }
-
-    .site-footer p {
-      margin: 0;
-      color: var(--color-text-muted);
-    }
-
-    .site-footer a {
-      font-weight: 500;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
-  </style>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jgsystemsconsulting.github.io/awesome-archimate/">
+<meta property="og:title" content="Awesome ArchiMate">
+<meta property="og:description" content="A curated, vetted, dated list of ArchiMate resources: Open Group specifications and certification, the Archi tool and its plugins, books, and openable example models.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Awesome ArchiMate","applicationCategory":"DeveloperApplication","operatingSystem":"Any","softwareVersion":"0.1.0","license":"https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/LICENSE","url":"https://jgsystemsconsulting.github.io/awesome-archimate/","codeRepository":"https://github.com/jgsystemsconsulting/awesome-archimate","author":{"@type":"Organization","name":"JG Systems Consulting Ltd"}}
+</script>
+<style>
+/* Page-scoped entry lists, chips, and link rows; tokens from site.css. */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none;}
+.chip{display:inline-flex;align-items:baseline;gap:.6em;padding:8px 14px;border:1px solid var(--line);background:var(--ink-2);}
+.chip dt{font:400 .6875rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);}
+.chip dd{margin:0;font:700 .8125rem/1 var(--mono);color:var(--text);}
+.family{margin-top:1.25rem;color:var(--mute-2);}
+.entries{list-style:none;margin:0;padding:0;}
+.entries li{padding:.55rem 0;border-bottom:1px solid var(--line);}
+.entries a{font-weight:600;}
+.etags{display:block;font:400 .75rem/1.6 var(--mono);color:var(--mute);}
+.section-index{list-style:none;margin:1.5rem 0 0;padding:0;}
+.section-index li{padding:.55rem 0;border-bottom:1px solid var(--line);}
+.section-index li:first-child{border-top:1px solid var(--line);}
+.section-index a{font-weight:600;}
+.link-list{list-style:none;margin:0;padding:0;}
+.link-list li{padding:.55rem 0;border-bottom:1px solid var(--line);}
+.link-list li:first-child{border-top:1px solid var(--line);}
+.link-list a{font-weight:600;}
+</style>
 </head>
 <body>
-  <nav class="site-nav" aria-label="Page">
-    <div class="shell">
-      <a href="#hero">Top</a>
-      <a href="#evidence">Status</a>
-      <a href="#sections">Sections</a>
-      <a href="#curation">Curation</a>
-      <a href="#contribute">Contribute</a>
-      <a class="nav-full" href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md">Open full list</a>
-    </div>
-  </nav>
 
-  <main>
-    <section id="hero">
-      <div class="shell">
-        <h1>Awesome ArchiMate</h1>
-        <p class="claim">Curated ArchiMate resources for enterprise architecture and MBSE practitioners.</p>
-        <p class="support">Open the full list on GitHub for searchable Contents, then jump to the section that matches your work.</p>
-        <a class="primary" href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md">Open full list</a>
-      </div>
-    </section>
+<header class="masthead"><div class="wrap">
+  <span>CLASSIFICATION: <b>PUBLIC</b></span>
+  <span>LICENCE: <b>CC0-1.0</b></span>
+  <span>DOC-ID: <b>JGS-AWE-ARCH</b></span>
+  <span>REV <b>0.1.0</b></span>
+</div></header>
 
-    <section id="evidence" aria-labelledby="evidence-heading">
-      <div class="shell">
-        <h2 id="evidence-heading">Status</h2>
-        <dl class="chips">
-          <div class="chip">
-            <dt>version</dt>
-            <dd>0.1.0</dd>
-          </div>
-          <div class="chip">
-            <dt>sweep</dt>
-            <dd>2026-09</dd>
-          </div>
-          <div class="chip">
-            <dt>entries</dt>
-            <dd>17</dd>
-          </div>
-        </dl>
-        <p class="family">Part of the awesome-mbse list family.</p>
-      </div>
-    </section>
+<nav class="site" aria-label="Site"><div class="wrap">
+  <a class="brand" href="index.html" aria-label="JG Systems Consulting home"><img src="images/jgs-emblem-dark.png" alt="" width="28" height="28"></a>
+  <a href="#about">About</a>
+  <a href="#specifications-and-standards">Specs</a>
+  <a href="#certification">Certification</a>
+  <a href="#the-archi-tool">Archi tool</a>
+  <a href="#plugins-and-collaboration">Plugins</a>
+  <a href="#books">Books</a>
+  <a href="#example-models">Examples</a>
+  <a href="#togaf-alignment">TOGAF</a>
+  <a href="#communities">Communities</a>
+  <a href="#install-usage">Install</a>
+  <a href="#support">Support</a>
+</div></nav>
 
-    <section id="sections" aria-labelledby="sections-heading">
-      <div class="shell">
-        <h2 id="sections-heading">Sections</h2>
-        <p class="muted prose">Eight README anchors. Open a section on GitHub.</p>
-        <ul class="section-index">
-          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md#specifications-and-standards">Specifications and standards</a></li>
-          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md#certification">Certification</a></li>
-          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md#the-archi-tool">The Archi tool</a></li>
-          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md#plugins-and-collaboration">Plugins and collaboration</a></li>
-          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md#books">Books</a></li>
-          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md#example-models">Example models</a></li>
-          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md#togaf-alignment">TOGAF alignment</a></li>
-          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md#communities">Communities</a></li>
-        </ul>
-      </div>
-    </section>
+<main>
+<div class="hero"><div class="wrap">
+  <h1>Awesome ArchiMate</h1>
+  <p>A curated, vetted, dated list of ArchiMate resources: Open Group specifications and certification, the Archi tool and its plugins, books, and openable example models.</p>
+  <p class="sub">Nothing to install: browse the seventeen entries here or on GitHub. The list never re-hosts content; every link goes to the source.</p>
+  <div class="cta"><a class="btn btn-primary" href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md">Browse the list <span aria-hidden="true">&rarr;</span></a>
+  <a class="btn btn-ghost" href="https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=suggest-resource.yml">Suggest a resource <span aria-hidden="true">&rarr;</span></a></div>
+</div></div>
 
-    <section id="curation" aria-labelledby="curation-heading">
-      <div class="shell">
-        <h2 id="curation-heading">Curation</h2>
-        <p class="prose">Public-domain (CC0) curated index of ArchiMate specifications, certification, the Archi tool and plugins, books, and openable example models. Nothing to install. The list does not re-host upstream content; follow each link to the source.</p>
-      </div>
-    </section>
+<section id="about"><div class="wrap">
+  <div class="shead"><span class="label">&sect;01 &middot; About</span><h2>A curated, vetted, dated list</h2></div>
+  <p class="lead">A curated, vetted, dated list of ArchiMate resources: Open Group specifications and certification, the Archi tool and its plugins, books, and openable example models. Every entry keeps its README name, link, and one-line description.</p>
+  <dl class="chips" style="margin-top:1.5rem">
+    <div class="chip"><dt>version</dt><dd>0.1.0</dd></div>
+    <div class="chip"><dt>sweep</dt><dd>2026-09</dd></div>
+    <div class="chip"><dt>entries</dt><dd>17</dd></div>
+  </dl>
+  <p class="family">Part of the <a href="https://github.com/jgsystemsconsulting/awesome-mbse/blob/main/FAMILY.md">awesome-mbse list family</a>. Maintained by <a href="https://github.com/jgsystemsconsulting">JG Systems Consulting Ltd.</a> See <a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/CONTRIBUTING.md#editorial-neutrality">Editorial neutrality</a>. People and organizations behind these resources: <a href="https://github.com/jgsystemsconsulting/awesome-mbse-community">awesome-mbse-community</a>.</p>
+  <ul class="section-index">
+    <li><a href="#specifications-and-standards">Specifications and standards</a></li>
+    <li><a href="#certification">Certification</a></li>
+    <li><a href="#the-archi-tool">The Archi tool</a></li>
+    <li><a href="#plugins-and-collaboration">Plugins and collaboration</a></li>
+    <li><a href="#books">Books</a></li>
+    <li><a href="#example-models">Example models</a></li>
+    <li><a href="#togaf-alignment">TOGAF alignment</a></li>
+    <li><a href="#communities">Communities</a></li>
+  </ul>
+</div></section>
 
-    <section id="contribute" aria-labelledby="contribute-heading">
-      <div class="shell">
-        <h2 id="contribute-heading">Contribute</h2>
-        <p class="muted prose">Suggest a resource or report a dead link via the repository issue forms.</p>
-        <ul class="link-list">
-          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/CONTRIBUTING.md">How to contribute</a></li>
-          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=suggest-resource.yml">Suggest a resource</a></li>
-          <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=bug_report.yml">Report a bug or dead link</a></li>
-        </ul>
-      </div>
-    </section>
-  </main>
+<section id="specifications-and-standards"><div class="wrap">
+  <div class="shead"><span class="label">&sect;02 &middot; Specifications and standards</span><h2>Specifications and standards</h2></div>
+  <ul class="entries">
+    <li><a href="https://publications.opengroup.org/c226">ArchiMate 3.2 Specification</a> - The Open Group standard defining the ArchiMate 3.2 modeling language, document C226 <span class="etags">ArchiMate3 spec (2022)</span></li>
+    <li><a href="https://publications.opengroup.org/c260">ArchiMate 4 Specification</a> - The Open Group standard defining the ArchiMate 4 modeling language, document C260, published April 2026 <span class="etags">ArchiMate4 spec (2026)</span></li>
+    <li><a href="https://www.opengroup.org/open-group-archimate-model-exchange-file-format">ArchiMate Model Exchange File Format</a> - The Open Group specification for the XML-based interchange format for ArchiMate models <span class="etags">ArchiMate-general spec (2026)</span></li>
+  </ul>
+</div></section>
 
-  <footer class="site-footer">
-    <div class="shell">
-      <p>
-        Licence: <a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/LICENSE">CC0-1.0</a>.
-        <a href="https://labs.jgsystemsconsulting.com/licensing.html">Licence enquiries</a>.
-        Maintained by JG Systems Consulting Ltd.
-      </p>
-    </div>
-  </footer>
+<section id="certification"><div class="wrap">
+  <div class="shead"><span class="label">&sect;03 &middot; Certification</span><h2>Certification</h2></div>
+  <ul class="entries">
+    <li><a href="https://www.opengroup.org/certifications/archimate">ArchiMate Certification</a> - The Open Group certification program for individuals: Foundation and Practitioner levels <span class="etags">ArchiMate-general certification (2026)</span></li>
+    <li><a href="https://www.opengroup.org/certifications/archimate/tools">ArchiMate Tool Certification</a> - The Open Group certification program for ArchiMate modeling tools <span class="etags">ArchiMate-general certification (2026)</span></li>
+  </ul>
+</div></section>
+
+<section id="the-archi-tool"><div class="wrap">
+  <div class="shead"><span class="label">&sect;04 &middot; The Archi tool</span><h2>The Archi tool</h2></div>
+  <ul class="entries">
+    <li><a href="https://github.com/archimatetool/archi">Archi</a> - Open-source ArchiMate modeling tool for Windows, macOS, and Linux, with full ArchiMate 3.2 support <span class="etags">ArchiMate3 Archi tool (2026)</span></li>
+    <li><a href="https://github.com/archimatetool/archi/wiki">Archi Wiki</a> - Official Archi wiki: user guides, how-tos, and plugin documentation <span class="etags">ArchiMate-general Archi docs (2026)</span></li>
+  </ul>
+</div></section>
+
+<section id="plugins-and-collaboration"><div class="wrap">
+  <div class="shead"><span class="label">&sect;05 &middot; Plugins and collaboration</span><h2>Plugins and collaboration</h2></div>
+  <ul class="entries">
+    <li><a href="https://www.archimatetool.com/plugins/">Archi plugins</a> - Catalog of official Archi plugins: jArchi scripting, coArchi collaboration, visualization, and more <span class="etags">ArchiMate-general Archi plugin (2026)</span></li>
+    <li><a href="https://github.com/archimatetool/archi-scripting-plugin">jArchi</a> - Official Archi scripting plugin: automate model queries, reports, and content generation with JavaScript <span class="etags">ArchiMate-general Archi plugin (2026)</span></li>
+    <li><a href="https://github.com/archimatetool/archi-modelrepository-plugin">coArchi</a> - Archi plugin adding Git-based model collaboration: shared repositories, commits, and compare <span class="etags">ArchiMate-general Archi plugin (2026)</span></li>
+    <li><a href="https://github.com/archimatetool/archi-modelrepository-plugin2">coArchi 2</a> - Second-generation coArchi plugin for Git-based shared model repositories in Archi <span class="etags">ArchiMate-general Archi plugin (2026)</span></li>
+  </ul>
+</div></section>
+
+<section id="books"><div class="wrap">
+  <div class="shead"><span class="label">&sect;06 &middot; Books</span><h2>Books</h2></div>
+  <ul class="entries">
+    <li><a href="https://ea.rna.nl/mastering-archimate-edition-3-2/">Mastering ArchiMate</a> - Gerben Wierda's practitioner book on ArchiMate, Edition 3.2 (PDF released October 2024), with free overview PDFs <span class="etags">ArchiMate3 book (2024)</span></li>
+  </ul>
+</div></section>
+
+<section id="example-models"><div class="wrap">
+  <div class="shead"><span class="label">&sect;07 &middot; Example models</span><h2>Example models</h2></div>
+  <ul class="entries">
+    <li><a href="https://github.com/archimatetool/ArchiModels">ArchiModels</a> - Archived official collection of example ArchiMate models that open in Archi; kept as reference material <span class="etags">ArchiMate3 Archi has-model example (2021)</span></li>
+    <li><a href="https://github.com/yasenstar/ArchiSurance_Practice">ArchiSurance Practice</a> - Community practice models recreating the ArchiSurance case study in Archi <span class="etags">ArchiMate3 Archi has-model example (2026)</span></li>
+    <li><a href="https://github.com/archimate-models/archisurance">ArchiSurance (archimate-models)</a> - The ArchiSurance example model from the ArchiMate specification, packaged for Archi <span class="etags">ArchiMate3 Archi has-model example (2017)</span></li>
+  </ul>
+</div></section>
+
+<section id="togaf-alignment"><div class="wrap">
+  <div class="shead"><span class="label">&sect;08 &middot; TOGAF alignment</span><h2>TOGAF alignment</h2></div>
+  <ul class="entries">
+    <li><a href="https://www.opengroup.org/togaf">TOGAF</a> - The Open Group TOGAF standard hub; TOGAF is the enterprise architecture method ArchiMate viewpoints serve <span class="etags">ArchiMate-general TOGAF standard (2026)</span></li>
+  </ul>
+</div></section>
+
+<section id="communities"><div class="wrap">
+  <div class="shead"><span class="label">&sect;09 &middot; Communities</span><h2>Communities</h2></div>
+  <ul class="entries">
+    <li><a href="https://forum.archimatetool.com/">Archi forum</a> - Community support forum for Archi users: troubleshooting, plugin discussion, and scripting help <span class="etags">ArchiMate-general Archi community (2026)</span></li>
+  </ul>
+</div></section>
+
+<section id="install-usage"><div class="wrap">
+  <div class="shead"><span class="label">&sect;10 &middot; Install and usage</span><h2>Nothing to install</h2></div>
+  <p class="lead">Nothing to install. This list is a curated index: browse it here on GitHub, or clone it:</p>
+  <div class="sheet" style="margin-top:1.5rem"><pre>git clone https://github.com/jgsystemsconsulting/awesome-archimate.git</pre></div>
+  <p class="lead" style="margin-top:1.25rem">Open the Contents at the top and jump to a section, or search the page with your browser's find function. Open any entry's link to reach the upstream resource; the list never re-hosts content. To suggest a resource or report a defect, use the Support channels below (or open a pull request that follows <a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>). See <a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/CHANGELOG.md">CHANGELOG.md</a> for versions and the release history.</p>
+</div></section>
+
+<section id="support"><div class="wrap">
+  <div class="shead"><span class="label">&sect;11 &middot; Support</span><h2>Support</h2></div>
+  <p class="lead" style="margin-bottom:1.5rem">Suggest a resource or report a dead link via the repository issue forms.</p>
+  <ul class="link-list">
+    <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=bug_report.yml">Report a bug or dead link</a></li>
+    <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/issues/new?template=suggest-resource.yml">Suggest a resource</a></li>
+    <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/security/advisories/new">Security issues: private security advisory</a> (see <a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/SECURITY.md">SECURITY.md</a>)</li>
+    <li><a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/CONTRIBUTING.md">How to contribute</a></li>
+  </ul>
+  <p class="lead" style="margin-top:1.25rem">Capella and Arcadia resources belong on the sibling list: <a href="https://github.com/jgsystemsconsulting/awesome-capella">awesome-capella</a>.</p>
+</div></section>
+
+</main>
+<footer><div class="wrap">
+  <div class="tblock">
+    <div class="tcell"><span class="tl">Product</span><b>Awesome ArchiMate</b></div>
+    <div class="tcell"><span class="tl">Rev</span><b>0.1.0</b></div>
+    <div class="tcell"><span class="tl">Licence</span><b>CC0-1.0</b></div>
+    <div class="tcell"><span class="tl">Repository</span><b>jgsystemsconsulting/awesome-archimate</b></div>
+    <div class="tcell"><span class="tl">Engine</span><b>jgs-site-template</b></div>
+    <div class="tcell"><span class="tl">Owner</span><b>JG Systems Consulting Ltd</b></div>
+  </div>
+  <p class="fnote">Licence: <a href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/LICENSE">CC0-1.0</a>. <a href="https://labs.jgsystemsconsulting.com/licensing.html">Licence enquiries</a>. Maintained by JG Systems Consulting Ltd.</p>
+</div></footer>
+
 </body>
 </html>
