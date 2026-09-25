@@ -10,6 +10,11 @@
   <meta property="og:description" content="Curated ArchiMate resources for enterprise architecture and MBSE practitioners.">
   <meta property="og:url" content="https://jgsystemsconsulting.github.io/awesome-archimate/">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://jgsystemsconsulting.github.io/awesome-archimate/title-card.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="720">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://jgsystemsconsulting.github.io/awesome-archimate/title-card.png">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23157adb'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='17' font-weight='600' fill='%23ffffff' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
   <link rel="preload" href="fonts/IBMPlexSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/IBMPlexSans-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
@@ -233,6 +238,20 @@
       margin-bottom: var(--space-4);
     }
 
+    /* Title card */
+    .hero-card {
+      margin: 0 0 var(--space-4);
+    }
+
+    .hero-card img {
+      display: block;
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+    }
+
     .primary {
       display: inline-flex;
       align-items: center;
@@ -419,6 +438,9 @@
       <div class="shell">
         <h1>Awesome ArchiMate</h1>
         <p class="claim">Curated ArchiMate resources for enterprise architecture and MBSE practitioners.</p>
+        <figure class="hero-card">
+          <img src="title-card.png" alt="awesome-archimate skill-overview title card: a curated list of ArchiMate resources for enterprise architecture and MBSE" width="1280" height="720">
+        </figure>
         <p class="support">Open the full list on GitHub for searchable Contents, then jump to the section that matches your work.</p>
         <a class="primary" href="https://github.com/jgsystemsconsulting/awesome-archimate/blob/main/README.md">Open full list</a>
       </div>
