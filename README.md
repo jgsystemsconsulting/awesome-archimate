@@ -51,6 +51,8 @@ See [Editorial neutrality](CONTRIBUTING.md#editorial-neutrality).
 - [jArchi](https://github.com/archimatetool/archi-scripting-plugin) - Official Archi scripting plugin: automate model queries, reports, and content generation with JavaScript `ArchiMate-general` `Archi` `plugin` (2026).
 - [coArchi](https://github.com/archimatetool/archi-modelrepository-plugin) - Archi plugin adding Git-based model collaboration: shared repositories, commits, and compare `ArchiMate-general` `Archi` `plugin` (2026).
 - [coArchi 2](https://github.com/archimatetool/archi-modelrepository-plugin2) - Second-generation coArchi plugin for Git-based shared model repositories in Archi `ArchiMate-general` `Archi` `plugin` (2026).
+- [Etione](https://etione.archiet.ai) - Browser-based ArchiMate 3.2 and C4 editor that generates editable diagrams from written requirements, with PDF/PNG/SVG/XML/JSON export `ArchiMate3` `other-tool` `tool` (2026).
+- [Entelim](https://entelim.org) - Open-source (AGPL-3.0) enterprise architecture and intelligence platform built on ArchiMate 3.2; imports Archi and Open Exchange models `ArchiMate3` `other-tool` `tool` (2026).
 
 ## Books
 
